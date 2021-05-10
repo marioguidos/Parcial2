@@ -65,6 +65,13 @@
         android:layout_marginTop="30dp"
         android:text="Promedio de kilómetros recorridos y dinero invertido en combustible (Diesel, Premium y Regular) durante un rango de tiempo específico" />
 
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/svBuscar"
+        android:layout_width="359dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        app:queryHint="Filtrar por fechas" />
     <ListView
         android:id="@+id/lvPromedios"
         android:layout_width="363dp"

@@ -4,11 +4,11 @@ public class Promedio {
     public int id;
     public String titulo;
     public int imagenKilometros;
-    public String kilometros;
+    public Double kilometros;
     public int imagenCostos;
-    public String costos;
+    public Double costos;
 
-    public Promedio(int id, String titulo, int imagenKilometros, String kilometros, int imagenCostos, String costos) {
+    public Promedio(int id, String titulo, int imagenKilometros, Double kilometros, int imagenCostos, Double costos) {
         this.id = id;
         this.titulo = titulo;
         this.imagenKilometros = imagenKilometros;
@@ -41,11 +41,11 @@ public class Promedio {
         this.imagenKilometros = imagenKilometros;
     }
 
-    public String getKilometros() {
+    public double getKilometros() {
         return kilometros;
     }
 
-    public void setKilometros(String  kilometros) {
+    public void setKilometros(Double  kilometros) {
         this.kilometros = kilometros;
     }
 
@@ -57,11 +57,11 @@ public class Promedio {
         this.imagenCostos = imagenCostos;
     }
 
-    public String getCostos() {
+    public double getCostos() {
         return costos;
     }
 
-    public void setCostos(String costos) {
+    public void setCostos(Double costos) {
         this.costos = costos;
     }
 }

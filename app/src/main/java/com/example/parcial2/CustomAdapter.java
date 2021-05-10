@@ -58,8 +58,8 @@ public class CustomAdapter extends BaseAdapter {
         titulo.setText(p.titulo);
         imageViewKilometros.setImageResource(p.imagenKilometros);
         imageViewCostos.setImageResource(p.imagenCostos);
-        textViewKilometros.setText(p.kilometros);
-        textViewCostos.setText(p.costos);
+        textViewKilometros.setText(p.kilometros.toString());
+        textViewCostos.setText(p.costos.toString());
 
         return convertView;
     }
