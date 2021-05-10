@@ -68,29 +68,7 @@ public class AddTransaction extends AppCompatActivity {
     });
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.opciones, android.R.layout.simple_spinner_item);
         opciones.setAdapter(adapter);
-    btnMmostrar.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            AppBaseGas db= Room.databaseBuilder(AddTransaction.this,
-                    AppBaseGas.class,"dbregistro").allowMainThreadQueries().build();
 
-            //Consultando registros de la base de datos
-            List<Registro> lista = db.registroDao().getAll();
-            String valores = "";
-            //Recorrer la lista de los registros
-            for(int i=0; i<lista.size();i++){
-                //Concatenar los resultados
-                valores += "ID: "+lista.get(i).idFactura+": idFactura"+
-                        lista.get(i).numeroFac+" numeroFac:"+
-                        lista.get(i).fecha + "fecha: " +
-                        lista.get(i).tipoCom+" tipoCombu:"+
-                        lista.get(i).montoCom + "monto: " +
-                        lista.get(i).ktm + "\n";
-            }//Fin del FOR
-            //Asignar el acumulador al textview de los resultados
-            txvConsulta.setText(valores);
-        }
-    });
 
     }
     private void showDateDialog(final EditText date_in) {
