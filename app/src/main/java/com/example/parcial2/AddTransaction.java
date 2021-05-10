@@ -38,7 +38,6 @@ public class AddTransaction extends AppCompatActivity {
         txtKM = (EditText) findViewById(R.id.txtKM);
         btnAdd = (Button) findViewById(R.id.btnAgregar);
         opciones = (Spinner) findViewById(R.id.spnCombustible);
-        btnMmostrar = (Button) findViewById(R.id.btnMostrar);
         //DateTimePicker setUp
         date_in=findViewById(R.id.date_input);
         date_in.setInputType(InputType.TYPE_NULL);
