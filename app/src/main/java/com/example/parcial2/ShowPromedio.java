@@ -24,6 +24,10 @@ public class ShowPromedio extends AppCompatActivity {
     EditText datefinal_in;
     ListView listViewPromedio;
     List<Promedio> lst;
+    public int lengthD = 0,lengthR = 0,lengthP = 0;
+    public double costoAcumD=0, kmAcumD=0;
+    public double costoAcumR=0, kmAcumR=0;
+    public double costoAcumP=0, kmAcumP=0;
 //
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +48,19 @@ public class ShowPromedio extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Promedio p = lst.get(position);
 
-                Toast.makeText(getBaseContext(),p.titulo,Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getBaseContext(),p.titulo,Toast.LENGTH_SHORT).show();
+                if(p.titulo == "DIESEL")
+                {
+                    Toast.makeText(getApplicationContext(),"Costo diesel promedio"+(costoAcumD/lengthD)+" KM diesel promedio: "+(kmAcumD/lengthD),Toast.LENGTH_LONG).show();
+                }
+                else if(p.titulo == "PREMIUM")
+                {
+                    Toast.makeText(getApplicationContext(),"Costo Premium promedio"+(costoAcumP/lengthP)+" KM Premium promedio: "+(kmAcumP/lengthP),Toast.LENGTH_LONG).show();
+                }
+                else
+                {
+                    Toast.makeText(getApplicationContext(),"Costo Regualr promedio"+(costoAcumR/lengthR)+" KM Regular promedio: "+(kmAcumR/lengthR),Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -69,10 +85,7 @@ public class ShowPromedio extends AppCompatActivity {
         List<Registro> lista = db.registroDao().getAll();
         String valores = "";
         //Recorrer la lista de los registros
-        int lengthD = 0,lengthR = 0,lengthP = 0;
-        double costoAcumD=0, kmAcumD=0;
-        double costoAcumR=0, kmAcumR=0;
-        double costoAcumP=0, kmAcumP=0;
+
         for(int i=0; i<lista.size();i++){
             if(lista.get(i).tipoCom.equals("Diesel")){
                 costoAcumD = costoAcumD +lista.get(i).montoCom;
@@ -89,18 +102,15 @@ public class ShowPromedio extends AppCompatActivity {
             }
 
         }//Fin del FOR
-        //Asignar el acumulador al textview de los resultados
-        Toast.makeText(getApplicationContext(),"Costo diesel promedio"+(costoAcumD/lengthD)+" KM disel promedio: "+(kmAcumD/lengthD),Toast.LENGTH_LONG).show();
-        Toast.makeText(getApplicationContext(),"Costo Regualr promedio"+(costoAcumR/lengthR)+" KM disel promedio: "+(kmAcumR/lengthR),Toast.LENGTH_LONG).show();
-        Toast.makeText(getApplicationContext(),"Costo Premium promedio"+(costoAcumP/lengthP)+" KM disel promedio: "+(kmAcumP/lengthP),Toast.LENGTH_LONG).show();
 
     }
 
     private List<Promedio> GetData() {
+
         lst = new ArrayList<>();
-        lst.add(new Promedio(1,"DIESEL", R.drawable.arriba, "", R.drawable.cash,""));
-        lst.add(new Promedio(2,"PREMIUM", R.drawable.arriba, "", R.drawable.cash,""));
-        lst.add(new Promedio(3,"REGULAR", R.drawable.arriba, "", R.drawable.cash,""));
+        lst.add(new Promedio(1,"DIESEL", R.drawable.arriba, "kilD", R.drawable.cash,"costoAcumD/lengthD"));
+        lst.add(new Promedio(2,"PREMIUM", R.drawable.arriba, "kmAcumP/lengthP", R.drawable.cash,"costoAcumP/lengthP"));
+        lst.add(new Promedio(3,"REGULAR", R.drawable.arriba, "kmAcumR/lengthR", R.drawable.cash,"costoAcumR/lengthR"));
         return  lst;
     }
     private void showDateDialog(final EditText date_in){

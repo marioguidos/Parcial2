@@ -45,7 +45,7 @@ public class Promedio {
         return kilometros;
     }
 
-    public void setKilometros(String kilometros) {
+    public void setKilometros(String  kilometros) {
         this.kilometros = kilometros;
     }
 
