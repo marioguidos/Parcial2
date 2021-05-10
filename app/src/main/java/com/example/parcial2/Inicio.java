@@ -35,8 +35,8 @@ public class Inicio extends AppCompatActivity {
         lottieListButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               /* Intent intent = new Intent(getApplicationContext(), ShowPromedio.class);
-                startActivity(intent);*/
+                Intent intent = new Intent(getApplicationContext(), ShowPromedio.class);
+                startActivity(intent);
             }
         });
     }
