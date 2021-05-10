@@ -1,16 +1,16 @@
 package com.example.parcial2;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
@@ -22,25 +22,31 @@ public class ShowPromedio extends AppCompatActivity {
 
     EditText date_in;
     EditText datefinal_in;
-    private RecyclerView rcvPromedio;
-    private PromedioAdapter adapter;
-
+    ListView listViewPromedio;
+    List<Promedio> lst;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_promedio);
+
         date_in = findViewById(R.id.date_input);
         datefinal_in = findViewById(R.id.datefin_input);
         date_in.setInputType(InputType.TYPE_NULL);
         datefinal_in.setInputType(InputType.TYPE_NULL);
-        rcvPromedio = findViewById(R.id.rcvPromedio);
-        rcvPromedio.setLayoutManager(new LinearLayoutManager(this));
 
-        adapter = new PromedioAdapter(obtenerDatos());
-        rcvPromedio.setAdapter(adapter);
+        listViewPromedio = findViewById(R.id.lvPromedios);
 
+        CustomAdapter adapter = new CustomAdapter(this,GetData());
+        listViewPromedio.setAdapter(adapter);
+        listViewPromedio.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Promedio p = lst.get(position);
 
+                Toast.makeText(getBaseContext(),p.titulo,Toast.LENGTH_SHORT).show();
+            }
+        });
         date_in.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,9 +59,8 @@ public class ShowPromedio extends AppCompatActivity {
             public void onClick(View v) {
                 showDateDialog2(datefinal_in);
             }
-
-
         });
+
         AppBaseGas db= Room.databaseBuilder(ShowPromedio.this,
                 AppBaseGas.class,"dbregistro").allowMainThreadQueries().build();
 
@@ -87,22 +92,16 @@ public class ShowPromedio extends AppCompatActivity {
         Toast.makeText(getApplicationContext(),"Costo diesel promedio"+(costoAcumD/lengthD)+" KM disel promedio: "+(kmAcumD/lengthD),Toast.LENGTH_LONG).show();
         Toast.makeText(getApplicationContext(),"Costo Regualr promedio"+(costoAcumR/lengthR)+" KM disel promedio: "+(kmAcumR/lengthR),Toast.LENGTH_LONG).show();
         Toast.makeText(getApplicationContext(),"Costo Premium promedio"+(costoAcumP/lengthP)+" KM disel promedio: "+(kmAcumP/lengthP),Toast.LENGTH_LONG).show();
-    }
-
-
-
-    public List<PromedioModelo> obtenerDatos() {
-        List<PromedioModelo> datos = new ArrayList<>();
-        datos.add(new PromedioModelo("DIESEL",R.drawable.arriba,R.drawable.cash,"",""));
-        datos.add(new PromedioModelo("REGULAR",R.drawable.arriba,R.drawable.cash,"",""));
-        datos.add(new PromedioModelo("PREMIUM",R.drawable.arriba,R.drawable.cash,"",""));
-
-
-
-        return datos;
 
     }
 
+    private List<Promedio> GetData() {
+        lst = new ArrayList<>();
+        lst.add(new Promedio(1,"DIESEL", R.drawable.arriba, "", R.drawable.cash,""));
+        lst.add(new Promedio(2,"PREMIUM", R.drawable.arriba, "", R.drawable.cash,""));
+        lst.add(new Promedio(3,"REGULAR", R.drawable.arriba, "", R.drawable.cash,""));
+        return  lst;
+    }
     private void showDateDialog(final EditText date_in){
         final Calendar calendar=Calendar.getInstance();
         DatePickerDialog.OnDateSetListener dateSetListener=new DatePickerDialog.OnDateSetListener() {
