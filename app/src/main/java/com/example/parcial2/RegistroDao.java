@@ -11,8 +11,6 @@ public interface RegistroDao {
     @Query("SELECT * FROM registro")
     List<Registro> getAll();
 
-    @Query("SELECT *FROM REGISTRO WHERE idFactura=:facturaid")
-    List<Registro> buscarRegistro (int facturaid);
 
     @Insert
     Long insert(Registro registro);

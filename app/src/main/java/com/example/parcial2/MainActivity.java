@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent mostrar = new Intent(MainActivity.this, AddTransaction.class);
+                Intent mostrar = new Intent(MainActivity.this, Inicio.class);
                 startActivity(mostrar);
                 finish();
             }
