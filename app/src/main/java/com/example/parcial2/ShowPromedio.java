@@ -2,6 +2,7 @@ package com.example.parcial2;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Room;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.text.InputType;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -45,6 +47,24 @@ public class ShowPromedio extends AppCompatActivity {
                 showDateDialog2(datefinal_in);
             }
         });
+        AppBaseGas db= Room.databaseBuilder(ShowPromedio.this,
+                AppBaseGas.class,"dbregistro").allowMainThreadQueries().build();
+
+        //Consultando registros de la base de datos
+        List<Registro> lista = db.registroDao().getAll();
+        String valores = "";
+        //Recorrer la lista de los registros
+        for(int i=0; i<lista.size();i++){
+            //Concatenar los resultados
+            valores += "ID: "+lista.get(i).idFactura+": "+
+                    lista.get(i).numeroFac+" numeroFac:"+
+                    lista.get(i).fecha + "fecha: " +
+                    lista.get(i).tipoCom+" tipoCombu:"+
+                    lista.get(i).montoCom + "monto: " +
+                    lista.get(i).ktm + "\n";
+        }//Fin del FOR
+        //Asignar el acumulador al textview de los resultados
+        Toast.makeText(getApplicationContext(),valores,Toast.LENGTH_LONG).show();
     }
 
 

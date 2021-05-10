@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
@@ -64,6 +65,8 @@ public class AddTransaction extends AppCompatActivity {
             Toast.makeText(getApplicationContext(),
                     "Registro almacenado correctamente",
                     Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(getApplicationContext(), Inicio.class);
+            startActivity(intent);
         }
     });
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.opciones, android.R.layout.simple_spinner_item);
