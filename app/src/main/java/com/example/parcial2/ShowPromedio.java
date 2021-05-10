@@ -47,6 +47,7 @@ public class ShowPromedio extends AppCompatActivity {
                 Toast.makeText(getBaseContext(),p.titulo,Toast.LENGTH_SHORT).show();
             }
         });
+
         date_in.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
