@@ -93,9 +93,11 @@ public class ShowPromedio extends AppCompatActivity {
 
     public List<PromedioModelo> obtenerDatos() {
         List<PromedioModelo> datos = new ArrayList<>();
-        datos.add(new PromedioModelo(R.drawable.arriba, R.drawable.cash, "", "", "DIESEL"));
-        datos.add(new PromedioModelo(R.drawable.arriba, R.drawable.cash, "", "", "PREMIUM"));
-        datos.add(new PromedioModelo(R.drawable.arriba, R.drawable.cash, "", "", "REGULAR"));
+        datos.add(new PromedioModelo("DIESEL",R.drawable.arriba,R.drawable.cash,"",""));
+        datos.add(new PromedioModelo("REGULAR",R.drawable.arriba,R.drawable.cash,"",""));
+        datos.add(new PromedioModelo("PREMIUM",R.drawable.arriba,R.drawable.cash,"",""));
+
+
 
         return datos;
 

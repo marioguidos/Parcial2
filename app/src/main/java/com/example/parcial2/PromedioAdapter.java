@@ -29,6 +29,7 @@ public class PromedioAdapter extends RecyclerView.Adapter<PromedioAdapter.ViewHo
             textViewKilometros = itemView.findViewById(R.id.txvKilometros);
             textViewCostos = itemView.findViewById(R.id.txvCosto);
 
+
         }
     }
     public List<PromedioModelo> listaPromedio;
@@ -54,6 +55,7 @@ public class PromedioAdapter extends RecyclerView.Adapter<PromedioAdapter.ViewHo
         holder.imageViewCostos.setImageResource(listaPromedio.get(position).getImagenCostos());
         holder.textViewKilometros.setText(listaPromedio.get(position).getKilometros());
         holder.textViewCostos.setText(listaPromedio.get(position).getCostos());
+
 
     }
 
