@@ -9,9 +9,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
-public class PromedioAdapter extends RecyclerView.Adapter<PromedioAdapter.ViewHolder> {
+/*public class PromedioAdapter extends RecyclerView.Adapter<PromedioAdapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
     }
-}
+}*/
