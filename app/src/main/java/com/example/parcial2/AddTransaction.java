@@ -81,7 +81,7 @@ public class AddTransaction extends AppCompatActivity {
             //Recorrer la lista de los registros
             for(int i=0; i<lista.size();i++){
                 //Concatenar los resultados
-                valores += "ID: "+lista.get(i).idFactura+": "+
+                valores += "ID: "+lista.get(i).idFactura+": idFactura"+
                         lista.get(i).numeroFac+" numeroFac:"+
                         lista.get(i).fecha + "fecha: " +
                         lista.get(i).tipoCom+" tipoCombu:"+

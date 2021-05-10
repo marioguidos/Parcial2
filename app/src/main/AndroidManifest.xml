@@ -9,8 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Parcial2">
-        <activity android:name=".AddTransaction"></activity>
-        <activity android:name=".Inicio"></activity>
+        <activity android:name=".ShowPromedio"></activity>
+        <activity android:name=".AddTransaction" />
+        <activity android:name=".Inicio" />
         <activity android:name=".MainActivity">
             android:theme="@style/FullScreen">
             <intent-filter>

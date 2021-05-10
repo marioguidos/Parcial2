@@ -1,0 +1,56 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/txvTituloList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:textColor="#F6F3F3" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imgvKilometros"
+            android:layout_width="10dp"
+            android:layout_height="39dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/arriba" />
+
+        <TextView
+            android:id="@+id/txvKilometros"
+            android:layout_width="wrap_content"
+            android:layout_height="39dp"
+            android:gravity="center|left"
+            android:layout_weight="1"
+            android:hint="Kilómetros" />
+
+        <ImageView
+            android:id="@+id/imgvCosto"
+            android:layout_width="4dp"
+            android:layout_height="39dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/cash" />
+
+        <TextView
+            android:id="@+id/txvCosto"
+            android:layout_width="112dp"
+            android:layout_height="39dp"
+            android:layout_marginEnd="30dp"
+            android:gravity="center|left"
+            android:layout_weight="1"
+            android:hint="Costo" />
+    </LinearLayout>
+
+</LinearLayout>
