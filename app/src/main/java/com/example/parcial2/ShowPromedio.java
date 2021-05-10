@@ -1,6 +1,7 @@
 package com.example.parcial2;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.DatePickerDialog;
@@ -19,7 +20,8 @@ public class ShowPromedio extends AppCompatActivity {
 
     EditText date_in;
     EditText datefinal_in;
-    RecyclerView listaFactura;
+    private RecyclerView rcvPromedio;
+    private PromedioAdapter adapter;
 
 
     @Override
@@ -30,6 +32,11 @@ public class ShowPromedio extends AppCompatActivity {
         datefinal_in = findViewById(R.id.datefin_input);
         date_in.setInputType(InputType.TYPE_NULL);
         datefinal_in.setInputType(InputType.TYPE_NULL);
+        rcvPromedio = findViewById(R.id.rcvPromedio);
+        rcvPromedio.setLayoutManager(new LinearLayoutManager(this));
+
+        adapter = new PromedioAdapter(obtenerDatos());
+        rcvPromedio.setAdapter(adapter);
 
 
         date_in.setOnClickListener(new View.OnClickListener() {
@@ -44,10 +51,22 @@ public class ShowPromedio extends AppCompatActivity {
             public void onClick(View v) {
                 showDateDialog2(datefinal_in);
             }
+
+
         });
+
+
     }
 
+    public List<PromedioModelo> obtenerDatos() {
+        List<PromedioModelo> datos = new ArrayList<>();
+        datos.add(new PromedioModelo(R.drawable.arriba, R.drawable.cash, "", "", "DIESEL"));
+        datos.add(new PromedioModelo(R.drawable.arriba, R.drawable.cash, "", "", "PREMIUM"));
+        datos.add(new PromedioModelo(R.drawable.arriba, R.drawable.cash, "", "", "REGULAR"));
 
+        return datos;
+
+    }
 
     private void showDateDialog(final EditText date_in){
         final Calendar calendar=Calendar.getInstance();

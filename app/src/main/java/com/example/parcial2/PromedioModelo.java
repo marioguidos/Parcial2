@@ -1,15 +1,14 @@
 package com.example.parcial2;
 
 public class PromedioModelo {
-    public int id;
     public int imagenKilometros;
     public int imagenCostos;
     public String kilometros;
     public String costos;
     public String titulo;
 
-    public PromedioModelo(int id, int imagenKilometros, int imagenCostos, String kilometros, String costos, String titulo) {
-        this.id = id;
+    public PromedioModelo(int imagenKilometros, int imagenCostos, String kilometros, String costos, String titulo) {
+
         this.imagenKilometros = imagenKilometros;
         this.imagenCostos = imagenCostos;
         this.kilometros = kilometros;
@@ -17,14 +16,6 @@ public class PromedioModelo {
         this.titulo = titulo;
     }
 
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public int getImagenKilometros() {
         return imagenKilometros;
