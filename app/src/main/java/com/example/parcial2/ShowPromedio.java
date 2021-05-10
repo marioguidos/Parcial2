@@ -3,6 +3,7 @@ package com.example.parcial2;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Room;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.text.InputType;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -54,9 +56,40 @@ public class ShowPromedio extends AppCompatActivity {
 
 
         });
+        AppBaseGas db= Room.databaseBuilder(ShowPromedio.this,
+                AppBaseGas.class,"dbregistro").allowMainThreadQueries().build();
 
+        //Consultando registros de la base de datos
+        List<Registro> lista = db.registroDao().getAll();
+        String valores = "";
+        //Recorrer la lista de los registros
+        int lengthD = 0,lengthR = 0,lengthP = 0;
+        double costoAcumD=0, kmAcumD=0;
+        double costoAcumR=0, kmAcumR=0;
+        double costoAcumP=0, kmAcumP=0;
+        for(int i=0; i<lista.size();i++){
+            if(lista.get(i).tipoCom.equals("Diesel")){
+                costoAcumD = costoAcumD +lista.get(i).montoCom;
+                kmAcumD = kmAcumD + lista.get(i).ktm;
+                lengthD++;
+            }else if(lista.get(i).tipoCom.equals("Regular")){
+                costoAcumR = costoAcumR +lista.get(i).montoCom;
+                kmAcumR = kmAcumR + lista.get(i).ktm;
+                lengthR++;
+            }else if(lista.get(i).tipoCom.equals("Premiun")){
+                costoAcumP = costoAcumP +lista.get(i).montoCom;
+                kmAcumP = kmAcumP + lista.get(i).ktm;
+                lengthP++;
+            }
 
+        }//Fin del FOR
+        //Asignar el acumulador al textview de los resultados
+        Toast.makeText(getApplicationContext(),"Costo diesel promedio"+(costoAcumD/lengthD)+" KM disel promedio: "+(kmAcumD/lengthD),Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(),"Costo Regualr promedio"+(costoAcumR/lengthR)+" KM disel promedio: "+(kmAcumR/lengthR),Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(),"Costo Premium promedio"+(costoAcumP/lengthP)+" KM disel promedio: "+(kmAcumP/lengthP),Toast.LENGTH_LONG).show();
     }
+
+
 
     public List<PromedioModelo> obtenerDatos() {
         List<PromedioModelo> datos = new ArrayList<>();
