@@ -61,11 +61,11 @@ public class ShowPromedio extends AppCompatActivity {
                 }
                 else if(p.titulo == "PREMIUM")
                 {
-                    Toast.makeText(getApplicationContext(),"DETALLE DE COMPRAS\n\nPREMIUM\n"+acumPremium+"\n",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"DETALLE DE COMPRAS\n\nPREMIUM\n\n"+acumPremium+"\n",Toast.LENGTH_LONG).show();
                 }
                 else
                 {
-                    Toast.makeText(getApplicationContext(),"DETALLE DE COMPRAS\n\nREGULAR\n"+acumRegular+"\n",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"DETALLE DE COMPRAS\n\nREGULAR\n\n"+acumRegular+"\n",Toast.LENGTH_LONG).show();
                 }
 
             }
