@@ -30,6 +30,8 @@ public class ShowPromedio extends AppCompatActivity {
     public double costoAcumD=0, kmAcumD=0;
     public double costoAcumR=0, kmAcumR=0;
     public double costoAcumP=0, kmAcumP=0;
+    public  String acumRegular = "", acumPremium = "", acumDiesel = "";
+    public  String acumRegularCosto = "", acumPremiumCosto = "", acumDieselCosto = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +53,20 @@ public class ShowPromedio extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Promedio p = lst.get(position);
 
-                Toast.makeText(getBaseContext(),p.titulo,Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getBaseContext(),p.titulo,Toast.LENGTH_SHORT).show();
+
+                if(p.titulo == "DIESEL")
+                {
+                    Toast.makeText(getApplicationContext(),"DETALLE DE COMPRAS\n\nDIESEL\n\n"+acumDiesel+"\n",Toast.LENGTH_LONG).show();
+                }
+                else if(p.titulo == "PREMIUM")
+                {
+                    Toast.makeText(getApplicationContext(),"DETALLE DE COMPRAS\n\nPREMIUM\n"+acumPremium+"\n",Toast.LENGTH_LONG).show();
+                }
+                else
+                {
+                    Toast.makeText(getApplicationContext(),"DETALLE DE COMPRAS\n\nREGULAR\n"+acumRegular+"\n",Toast.LENGTH_LONG).show();
+                }
 
             }
         });
@@ -80,14 +95,17 @@ public class ShowPromedio extends AppCompatActivity {
 
         for(int i=0; i<lista.size();i++){
             if(lista.get(i).tipoCom.equals("Diesel")){
+                acumDiesel = acumDiesel + (lista.get(i).fecha+"    " + lista.get(i).montoCom +"\n" );
                 costoAcumD = costoAcumD +lista.get(i).montoCom;
                 kmAcumD = kmAcumD + lista.get(i).ktm;
                 lengthD++;
             }else if(lista.get(i).tipoCom.equals("Regular")){
+                acumRegular = acumRegular + (lista.get(i).fecha+"    " + lista.get(i).montoCom +"\n" );
                 costoAcumR = costoAcumR +lista.get(i).montoCom;
                 kmAcumR = kmAcumR + lista.get(i).ktm;
                 lengthR++;
             }else if(lista.get(i).tipoCom.equals("Premiun")){
+                acumPremium = acumPremium + (lista.get(i).fecha+"    " + lista.get(i).montoCom +"\n" );
                 costoAcumP = costoAcumP +lista.get(i).montoCom;
                 kmAcumP = kmAcumP + lista.get(i).ktm;
                 lengthP++;
@@ -98,6 +116,7 @@ public class ShowPromedio extends AppCompatActivity {
     }
 
     private List<Promedio> GetData() {
+
         AppBaseGas db= Room.databaseBuilder(ShowPromedio.this,
                 AppBaseGas.class,"dbregistro").allowMainThreadQueries().build();
 
