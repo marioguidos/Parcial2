@@ -20,7 +20,7 @@ import java.util.Calendar;
 import java.util.List;
 
 public class ShowPromedio extends AppCompatActivity {
-
+//Variables
     EditText date_in;
     EditText datefinal_in;
     ListView listViewPromedio;
