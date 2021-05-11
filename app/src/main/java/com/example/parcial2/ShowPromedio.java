@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-public class ShowPromedio extends AppCompatActivity implements SearchView.OnQueryTextListener {
+public class ShowPromedio extends AppCompatActivity {
 
     EditText date_in;
     EditText datefinal_in;
@@ -51,19 +51,8 @@ public class ShowPromedio extends AppCompatActivity implements SearchView.OnQuer
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Promedio p = lst.get(position);
 
-                //Toast.makeText(getBaseContext(),p.titulo,Toast.LENGTH_SHORT).show();
-                if(p.titulo == "DIESEL")
-                {
-                    Toast.makeText(getApplicationContext(),"Costo diesel promedio"+(costoAcumD/lengthD)+" KM diesel promedio: "+(kmAcumD/lengthD),Toast.LENGTH_LONG).show();
-                }
-                else if(p.titulo == "PREMIUM")
-                {
-                    Toast.makeText(getApplicationContext(),"Costo Premium promedio"+(costoAcumP/lengthP)+" KM Premium promedio: "+(kmAcumP/lengthP),Toast.LENGTH_LONG).show();
-                }
-                else
-                {
-                    Toast.makeText(getApplicationContext(),"Costo Regualr promedio"+(costoAcumR/lengthR)+" KM Regular promedio: "+(kmAcumR/lengthR),Toast.LENGTH_LONG).show();
-                }
+                Toast.makeText(getBaseContext(),p.titulo,Toast.LENGTH_SHORT).show();
+
             }
         });
 
@@ -174,23 +163,4 @@ public class ShowPromedio extends AppCompatActivity implements SearchView.OnQuer
         new DatePickerDialog(com.example.parcial2.ShowPromedio.this,dateSetListener, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
     }
 
-    private void initListener()
-    {
-        searchView.setOnQueryTextListener(this);
-    }
-
-    @Override
-    public boolean onQueryTextSubmit(String query) {
-        return false;
-    }
-
-    @Override
-    public boolean onQueryTextChange(String newText) {
-        return false;
-    }
-
-    @Override
-    public void onPointerCaptureChanged(boolean hasCapture) {
-
-    }
 }
